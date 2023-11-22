@@ -5,6 +5,8 @@ import lombok.Data;
 
 import java.util.List;
 
+import static jakarta.persistence.GenerationType.SEQUENCE;
+
 @Entity
 @Data
 @Table(name="servicio")
@@ -18,7 +20,7 @@ public class Servicio {
     @JoinColumn(name = "id_prestador")
     private Prestador prestador;
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=SEQUENCE, generator = "IDENTITY")
     Long id;
     private String nombreServicio;
     private String diasYHorarios;

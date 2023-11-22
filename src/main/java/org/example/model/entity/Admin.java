@@ -5,6 +5,8 @@ import lombok.Data;
 
 import java.util.List;
 
+import static jakarta.persistence.GenerationType.SEQUENCE;
+
 
 @Entity
 @Data
@@ -13,7 +15,7 @@ public class Admin {
     @OneToMany(mappedBy = "servicio")
     private List<Servicio> servicios;
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=SEQUENCE, generator = "IDENTITY")
     Long id;
     private String usuario;
     private String contrasenia;

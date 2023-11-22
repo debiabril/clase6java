@@ -6,6 +6,8 @@ import lombok.Data;
 import java.util.Date;
 import java.util.List;
 
+import static jakarta.persistence.GenerationType.SEQUENCE;
+
 @Entity
 @Data
 @Table(name="trabajo")
@@ -22,7 +24,7 @@ public class Trabajo {
     @OneToMany(mappedBy = "tarea", cascade = CascadeType.ALL)
     private List<Tarea> tareas;
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=SEQUENCE, generator = "IDENTITY")
     Long id;
     private Date rangoHorario;
     private String lugar;

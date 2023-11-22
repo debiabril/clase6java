@@ -5,6 +5,8 @@ import lombok.Data;
 import java.util.List;
 import java.util.Date;
 
+import static jakarta.persistence.GenerationType.SEQUENCE;
+
 @Entity
 @Data
 @Table(name="prestador")
@@ -12,7 +14,7 @@ public class Prestador {
     @OneToMany(mappedBy = "servicio")
     private List<Servicio> servicio;
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=SEQUENCE, generator = "IDENTITY")
     Long id;
     private String nombreYApellido;
     private Date fechaNacimiento;
